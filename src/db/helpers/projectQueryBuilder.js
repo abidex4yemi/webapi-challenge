@@ -14,11 +14,11 @@ export const projectQueryBuilder = knex => {
 	}
 
 	function getById(id) {
-		knex('projects as p')
-			.where('p.id', id)
-			.first();
+		let query = knex('projects as p');
 
-		const promises = [query, getProjectActions(id)]; // [ projects, actions ]
+		query.where('p.id', id).first();
+
+		const promises = [query, this.getProjectActions(id)]; // [ projects, actions ]
 
 		return Promise.all(promises).then(function(results) {
 			let [project, actions] = results;

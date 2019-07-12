@@ -1,5 +1,12 @@
 import express from 'express';
-import { getProjectById, addProject, updateProject, deleteProject, getProjectActions } from '../controllers/project';
+import {
+	getProjectById,
+	addProject,
+	updateProject,
+	deleteProject,
+	getProjectActions,
+	getProjects
+} from '../controllers/project';
 import { validateProjectParam, validateProjectBody } from '../middleware';
 
 const router = express.Router();
@@ -8,7 +15,10 @@ const router = express.Router();
 // `Note: router.param()` is a native method of express router
 router.param('id', validateProjectParam);
 
-router.route('/projects').post(validateProjectBody, addProject);
+router
+	.route('/projects')
+	.post(validateProjectBody, addProject)
+	.get(getProjects);
 
 router
 	.route('/projects/:id')
