@@ -7,7 +7,7 @@ import mappers from './mappers';
  * @returns {Object} {get, insert, update, remove}
  */
 export const actionQueryBuilder = knex => {
-	function get(id) {
+	function getById(id) {
 		let query = knex('actions');
 
 		if (id) {
@@ -43,8 +43,8 @@ export const actionQueryBuilder = knex => {
 
 	// action is the model name
 	return {
-		name: 'action',
-		get,
+		name: 'Action',
+		getById,
 		insert,
 		update,
 		remove

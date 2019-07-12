@@ -60,7 +60,7 @@ export const projectQueryBuilder = knex => {
 
 	// project is the model name
 	return {
-		name: 'project',
+		name: 'Project',
 		get,
 		insert,
 		update,
