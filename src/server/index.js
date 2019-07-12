@@ -9,6 +9,7 @@ import cors from 'cors';
 import { allErrorHandler } from './middleware';
 import { OK, createSuccess } from './util';
 import { actionRouter } from './routes/actionRouter';
+import { projectRouter } from './routes/projectRouter';
 
 const app = express();
 
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
 	return res.status(OK).json(createSuccess({ message: 'Welcome to home route...', data: [] }));
 });
 
-app.use('/api/v1', [actionRouter]);
+app.use('/api/v1', [actionRouter, projectRouter]);
 
 // Handle invalid request
 app.all('*', (req, res) => {
