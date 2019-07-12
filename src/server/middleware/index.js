@@ -1,0 +1,1 @@
+export { allErrorHandler } from './allErrorHandler';
