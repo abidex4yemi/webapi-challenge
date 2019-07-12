@@ -2,6 +2,7 @@
 /**
  * Application Main file
  */
+import 'babel-polyfill';
 import express from 'express';
 import logger from 'morgan';
 import helmet from 'helmet';

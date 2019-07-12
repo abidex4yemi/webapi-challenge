@@ -1,5 +1,4 @@
 'use strict';
-
 import app from './index';
 
 const PORT = process.env.PORT || 2019;
