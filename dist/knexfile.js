@@ -4,7 +4,6 @@ var path = require('path'); // Get root directory absolute path
 
 
 var rootDirectory = path.parse(__dirname).dir;
-console.log(rootDirectory);
 module.exports = {
   development: {
     client: 'sqlite3',
