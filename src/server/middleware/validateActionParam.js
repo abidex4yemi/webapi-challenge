@@ -11,25 +11,19 @@ import { NOT_FOUND, createError } from '../util';
  * @param {*} next 
  * @param {*} actionId 
  */
-export const validateActionParam = (req, res, next, actionId) => {
-	Action.getById(actionId)
-		.then(data => {
-			console.log(Object.keys(data).length === 0);
-			if (Object.keys(data).length === 0) {
-				return res.status(NOT_FOUND).json({
-					message: 'The requested resource could not be found.',
-					status: NOT_FOUND
-				});
-			}
+export const validateActionParam = async (req, res, next, actionId) => {
+	try {
+		const action = await Action.getById(actionId);
 
-			req.action = data;
+		req.action = action;
 
-			next();
-		})
-		.catch(error => {
-			return res.status(NOT_FOUND).json({
-				message: 'The requested resource could not be found.',
+		next();
+	} catch (error) {
+		return next(
+			createError({
+				message: 'Action ID is invalid.',
 				status: NOT_FOUND
-			});
-		});
+			})
+		);
+	}
 };

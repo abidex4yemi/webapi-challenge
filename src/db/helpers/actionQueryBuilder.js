@@ -25,14 +25,14 @@ export const actionQueryBuilder = knex => {
 	function insert(action) {
 		return knex('actions')
 			.insert(action)
-			.then(([id]) => this.get(id));
+			.then(([id]) => getById(id));
 	}
 
 	function update(id, changes) {
 		return knex('actions')
 			.where('id', id)
 			.update(changes)
-			.then(count => (count > 0 ? this.get(id) : null));
+			.then(count => (count > 0 ? getById(id) : null));
 	}
 
 	function remove(id) {

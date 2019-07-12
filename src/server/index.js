@@ -20,9 +20,6 @@ app.use(cors());
 app.use(logger('dev'));
 app.use(helmet());
 
-// handle all application error
-app.use(allErrorHandler());
-
 app.get('/', (req, res) => {
 	return res.status(OK).json(createSuccess({ message: 'Welcome to home route...', data: [] }));
 });
@@ -37,5 +34,8 @@ app.all('*', (req, res) => {
 		body: []
 	});
 });
+
+// handle all application error
+app.use(allErrorHandler());
 
 export default app;

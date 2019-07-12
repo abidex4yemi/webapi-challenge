@@ -7,13 +7,13 @@ import mappers from './mappers';
  * @returns {object} { get, insert, update, remove, getProjectActions }
  */
 export const projectQueryBuilder = knex => {
-	function get(id) {
+	function getById(id) {
 		let query = knex('projects as p');
 
 		if (id) {
 			query.where('p.id', id).first();
 
-			const promises = [query, this.getProjectActions(id)]; // [ projects, actions ]
+			const promises = [query, getProjectActions(id)]; // [ projects, actions ]
 
 			return Promise.all(promises).then(function(results) {
 				let [project, actions] = results;
@@ -36,14 +36,14 @@ export const projectQueryBuilder = knex => {
 	function insert(project) {
 		return knex('projects')
 			.insert(project)
-			.then(([id]) => this.get(id));
+			.then(([id]) => getById(id));
 	}
 
 	function update(id, changes) {
 		return knex('projects')
 			.where('id', id)
 			.update(changes)
-			.then(count => (count > 0 ? this.get(id) : null));
+			.then(count => (count > 0 ? getById(id) : null));
 	}
 
 	function remove(id) {
@@ -61,7 +61,7 @@ export const projectQueryBuilder = knex => {
 	// project is the model name
 	return {
 		name: 'Project',
-		get,
+		getById,
 		insert,
 		update,
 		remove,
