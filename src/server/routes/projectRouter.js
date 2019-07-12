@@ -1,5 +1,5 @@
 import express from 'express';
-import { getProjectById, addProject } from '../controllers/project';
+import { getProjectById, addProject, updateProject, deleteProject } from '../controllers/project';
 import { validateProjectParam, validateProjectBody } from '../middleware';
 
 const router = express.Router();
@@ -10,6 +10,10 @@ router.param('id', validateProjectParam);
 
 router.route('/projects').post(validateProjectBody, addProject);
 
-router.route('/projects/:id').get(getProjectById);
+router
+	.route('/projects/:id')
+	.get(getProjectById)
+	.put(validateProjectBody, updateProject)
+	.delete(deleteProject);
 
 export { router as projectRouter };
