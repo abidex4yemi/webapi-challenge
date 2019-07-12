@@ -5,7 +5,7 @@
  */
 export const BAD_REQUEST = 400;
 export const CONFLICT = 409;
-export const NOT_FOUND = 409;
+export const NOT_FOUND = 404;
 export const GENERIC_ERROR = 500;
 
 /**

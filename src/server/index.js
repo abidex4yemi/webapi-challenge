@@ -8,6 +8,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import { allErrorHandler } from './middleware';
 import { OK, createSuccess } from './util';
+import { actionRouter } from './routes/actionRouter';
 
 const app = express();
 
@@ -22,12 +23,13 @@ app.use(helmet());
 // handle all application error
 app.use(allErrorHandler());
 
-// [GET] Handle home route
 app.get('/', (req, res) => {
 	return res.status(OK).json(createSuccess({ message: 'Welcome to home route...', data: [] }));
 });
 
-// [all] Handle invalid request
+app.use('/api/v1', [actionRouter]);
+
+// Handle invalid request
 app.all('*', (req, res) => {
 	return res.status(404).json({
 		success: false,

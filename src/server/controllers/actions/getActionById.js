@@ -1,6 +1,6 @@
 'use strict';
 
-import { createSuccess, OK } from '../../helpers';
+import { createSuccess, OK } from '../../util';
 
 /**
  * Get action by id
