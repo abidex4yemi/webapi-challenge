@@ -1,5 +1,5 @@
 import express from 'express';
-import { getProjectById, addProject, updateProject, deleteProject } from '../controllers/project';
+import { getProjectById, addProject, updateProject, deleteProject, getProjectActions } from '../controllers/project';
 import { validateProjectParam, validateProjectBody } from '../middleware';
 
 const router = express.Router();
@@ -15,5 +15,7 @@ router
 	.get(getProjectById)
 	.put(validateProjectBody, updateProject)
 	.delete(deleteProject);
+
+router.route('/projects/:id/actions').get(getProjectActions);
 
 export { router as projectRouter };
