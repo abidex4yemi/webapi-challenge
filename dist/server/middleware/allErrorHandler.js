@@ -15,7 +15,7 @@ var _util = require("../util");
  * @param {object} next
  * @param {object} err 
  */
-var badRequest = function badRequest(err, req, res, next) {
+const badRequest = (err, req, res, next) => {
   if (err.status !== _util.BAD_REQUEST) {
     return next(err);
   } // Handle invalid JSON body
@@ -46,7 +46,7 @@ var badRequest = function badRequest(err, req, res, next) {
  */
 
 
-var notFound = function notFound(err, req, res, next) {
+const notFound = (err, req, res, next) => {
   if (err.status !== _util.NOT_FOUND) {
     return next(err);
   }
@@ -67,7 +67,7 @@ var notFound = function notFound(err, req, res, next) {
  */
 
 
-var resourceConflict = function resourceConflict(err, req, res, next) {
+const resourceConflict = (err, req, res, next) => {
   if (err.status !== _util.CONFLICT) {
     return next(err);
   }
@@ -87,7 +87,7 @@ var resourceConflict = function resourceConflict(err, req, res, next) {
  */
 
 
-var genericError = function genericError(err, req, res, next) {
+const genericError = (err, req, res, next) => {
   return res.status(_util.GENERIC_ERROR).json({
     ok: false,
     message: err.message || 'Internal server error',
@@ -99,21 +99,19 @@ var genericError = function genericError(err, req, res, next) {
  */
 
 
-var allMiddlewareAsObject = {
-  badRequest: badRequest,
-  notFound: notFound,
-  resourceConflict: resourceConflict,
-  genericError: genericError
+const allMiddlewareAsObject = {
+  badRequest,
+  notFound,
+  resourceConflict,
+  genericError
 };
 /**
  * Export all error middleware as an array
  * 
  */
 
-var allErrorHandler = function allErrorHandler() {
-  var allErrorMiddlewareAsArray = Object.keys(allMiddlewareAsObject).map(function (key) {
-    return allMiddlewareAsObject[key];
-  });
+const allErrorHandler = () => {
+  const allErrorMiddlewareAsArray = Object.keys(allMiddlewareAsObject).map(key => allMiddlewareAsObject[key]);
   return allErrorMiddlewareAsArray;
 };
 

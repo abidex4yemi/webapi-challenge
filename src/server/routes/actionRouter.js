@@ -1,6 +1,6 @@
 import express from 'express';
 import { validateActionParam, validateActionBody } from '../middleware';
-import { getActionById, addAction, updateAction, deleteAction } from '../controllers/actions';
+import { getActionById, addAction, updateAction, deleteAction, getActions } from '../controllers/actions';
 
 const router = express.Router();
 
@@ -8,7 +8,10 @@ const router = express.Router();
 // `Note: router.param()` is a native method of express router
 router.param('id', validateActionParam);
 
-router.route('/actions').post(validateActionBody, addAction);
+router
+	.route('/actions')
+	.post(validateActionBody, addAction)
+	.get(getActions);
 
 router
 	.route('/actions/:id')

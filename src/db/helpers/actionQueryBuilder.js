@@ -7,19 +7,17 @@ import mappers from './mappers';
  * @returns {Object} {get, insert, update, remove}
  */
 export const actionQueryBuilder = knex => {
-	function getById(id) {
-		let query = knex('actions');
-
-		if (id) {
-			return query
-				.where('id', id)
-				.first()
-				.then(action => mappers.actionToBody(action));
-		}
-
-		return query.then(actions => {
+	function getAll() {
+		return knex('actions').then(actions => {
 			return actions.map(action => mappers.actionToBody(action));
 		});
+	}
+
+	function getById(id) {
+		return knex('actions')
+			.where('id', id)
+			.first()
+			.then(action => mappers.actionToBody(action));
 	}
 
 	function insert(action) {
@@ -47,6 +45,7 @@ export const actionQueryBuilder = knex => {
 		getById,
 		insert,
 		update,
-		remove
+		remove,
+		getAll
 	};
 };

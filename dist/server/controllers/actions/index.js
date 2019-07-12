@@ -5,25 +5,25 @@ Object.defineProperty(exports, "__esModule", {
 });
 Object.defineProperty(exports, "getActionById", {
   enumerable: true,
-  get: function get() {
+  get: function () {
     return _getActionById.getActionById;
   }
 });
 Object.defineProperty(exports, "addAction", {
   enumerable: true,
-  get: function get() {
+  get: function () {
     return _addAction.addAction;
   }
 });
 Object.defineProperty(exports, "updateAction", {
   enumerable: true,
-  get: function get() {
+  get: function () {
     return _updateAction.updateAction;
   }
 });
 Object.defineProperty(exports, "deleteAction", {
   enumerable: true,
-  get: function get() {
+  get: function () {
     return _deleteAction.deleteAction;
   }
 });

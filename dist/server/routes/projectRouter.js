@@ -11,14 +11,14 @@ var _project = require("../controllers/project");
 
 var _middleware = require("../middleware");
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var router = _express["default"].Router(); // Validate any request url parameter (id) to project route
+const router = _express.default.Router(); // Validate any request url parameter (id) to project route
 // `Note: router.param()` is a native method of express router
 
 
 exports.projectRouter = router;
 router.param('id', _middleware.validateProjectParam);
 router.route('/projects').post(_middleware.validateProjectBody, _project.addProject);
-router.route('/projects/:id').get(_project.getProjectById).put(_middleware.validateProjectBody, _project.updateProject)["delete"](_project.deleteProject);
+router.route('/projects/:id').get(_project.getProjectById).put(_middleware.validateProjectBody, _project.updateProject).delete(_project.deleteProject);
 router.route('/projects/:id/actions').get(_project.getProjectActions);

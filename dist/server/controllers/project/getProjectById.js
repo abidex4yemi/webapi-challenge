@@ -14,8 +14,8 @@ var _util = require("../../util");
  * @param {object} res 
  * @param {object} next 
  */
-var getProjectById = function getProjectById(req, res) {
-  var project = req.project;
+const getProjectById = (req, res) => {
+  const project = req.project;
   return res.status(_util.OK).json((0, _util.createSuccess)({
     data: project
   }));

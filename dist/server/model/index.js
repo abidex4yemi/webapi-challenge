@@ -6,7 +6,7 @@ var _path = _interopRequireDefault(require("path"));
 
 var _database = _interopRequireDefault(require("../../config/database"));
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Module dependencies
@@ -18,10 +18,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
  * @param {String} directory
  * @returns {Array} modelFiles
  */
-var getModelFiles = function getModelFiles(directory) {
-  var modelFiles = _fs["default"].readdirSync(directory).filter(function (file) {
+const getModelFiles = directory => {
+  const modelFiles = _fs.default.readdirSync(directory).filter(file => {
     if (file.indexOf('.') !== 0 && file !== 'index.js') {
-      return _path["default"].join(directory, file);
+      return _path.default.join(directory, file);
     }
   });
 
@@ -29,11 +29,11 @@ var getModelFiles = function getModelFiles(directory) {
 }; // Get all model file based on this current directory
 
 
-var modelFiles = getModelFiles(__dirname);
-var models = modelFiles.reduce(function (modelsObj, filename) {
-  var modelFile = require("./".concat(filename));
+const modelFiles = getModelFiles(__dirname);
+const models = modelFiles.reduce((modelsObj, filename) => {
+  const modelFile = require(`./${filename}`);
 
-  var model = modelFile(_database["default"]);
+  const model = modelFile(_database.default);
 
   if (model) {
     modelsObj[model.name] = model;

@@ -5,31 +5,31 @@ Object.defineProperty(exports, "__esModule", {
 });
 Object.defineProperty(exports, "allErrorHandler", {
   enumerable: true,
-  get: function get() {
+  get: function () {
     return _allErrorHandler.allErrorHandler;
   }
 });
 Object.defineProperty(exports, "validateActionParam", {
   enumerable: true,
-  get: function get() {
+  get: function () {
     return _validateActionParam.validateActionParam;
   }
 });
 Object.defineProperty(exports, "validateActionBody", {
   enumerable: true,
-  get: function get() {
+  get: function () {
     return _validateActionBody.validateActionBody;
   }
 });
 Object.defineProperty(exports, "validateProjectParam", {
   enumerable: true,
-  get: function get() {
+  get: function () {
     return _validateProjectParam.validateProjectParam;
   }
 });
 Object.defineProperty(exports, "validateProjectBody", {
   enumerable: true,
-  get: function get() {
+  get: function () {
     return _validateProjectBody.validateProjectBody;
   }
 });
