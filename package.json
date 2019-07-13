@@ -4,6 +4,8 @@
   "description": "Web API Challenge",
   "main": "./src/server/start.js",
   "scripts": {
+    "db:migrate": "npx knex migrate:latest",
+    "db:seed": "npx knex seed:run",
     "start": "npm run prod",
     "server": "babel-node ./src/server/start.js",
     "server:prod": "node ./dist/server/start.js",
