@@ -20,7 +20,7 @@ module.exports = {
 			tableName: 'dbmigrations'
 		},
 		seeds: {
-			directory: `${__dirname}/src//db/seeds`
+			directory: `${__dirname}/src/db/seeds`
 		}
 	},
 	production: {
@@ -35,11 +35,11 @@ module.exports = {
 			}
 		},
 		migrations: {
-			directory: `${__dirname}/src//db/migrations`,
+			directory: `${__dirname}/src/db/migrations`,
 			tableName: 'dbmigrations'
 		},
 		seeds: {
-			directory: `${__dirname}/src//db/seeds`
+			directory: `${__dirname}/src/db/seeds`
 		}
 	}
 };
